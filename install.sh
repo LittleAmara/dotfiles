@@ -149,7 +149,7 @@ configure_app() {
     is_app_installed "$app" "$check_command"
     check_existing_config "$app" "$config_path" || return
     set -e
-    install_config "$config_path" "${REPO_PATH}/$app"
+    install_config "$config_path" "${REPO_PATH}/${app}/${main_config_subpath}"
     set +e
 
     local check_additional_setup="$(type 'additional_setup' 2>&1)"
