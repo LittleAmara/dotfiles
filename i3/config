@@ -13,6 +13,7 @@ font pango:SF Mono Regular 8
 set $mod Mod4
 
 default_border pixel 1
+hide_edge_borders smart
 
 # Sounds keybinds
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -98,6 +99,7 @@ set $ws10 "10"
 for_window [class="arandr"] floating enable, resize set 1100px 600px, border pixel 1, move position center;
 for_window [title="^kitty_float$"] floating enable, resize set 1100px 800px, border pixel 1, move position center;
 for_window [class="pavucontrol"] floating enable, resize set 1100px 600px, border normal, move position center;
+for_window [title="Preferences"] floating enable, resize set 1100px 600px, border normal, move position center;
 for_window [class="Spotify"] floating enable, resize set 1300px 800px, move position center, focus;
 for_window [class=".*" tiling] border pixel 1;
 
