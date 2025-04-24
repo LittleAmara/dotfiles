@@ -108,7 +108,7 @@ check_existing_config() {
     local app_name="$1"
     local config_path="$2"
 
-    if [ -d "$config_path" ]; then
+    if [ -d "$config_path" ] || [ -f "$config_path" ]; then
         if [ -n "$FORCE_OVERWRITE" ]; then
             local tmp_dir="$(mktemp -d)"
             log_warning "Moving current $app_name configuration to $tmp_dir"
