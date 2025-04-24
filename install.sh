@@ -28,7 +28,7 @@ readonly WHITE='\033[0;37m'
 readonly RESET='\033[0m'
 readonly REPO_PATH="$(dirname "$(realpath "$0")")"
 
-CONFIGURATION_VARIABLES='app_name config_path check_command'
+CONFIGURATION_VARIABLES='MANUAL_SETUP app_name config_path check_command main_config_subpath'
 
 LOG_PREFIX='INITIALIZATION'
 
@@ -148,9 +148,12 @@ configure_app() {
     is_dot_config_valid && log_success "dot_config is valid" || return 1
     is_app_installed "$app" "$check_command"
     check_existing_config "$app" "$config_path" || return
-    set -e
-    install_config "$config_path" "${REPO_PATH}/${app}/${main_config_subpath}"
-    set +e
+
+    if [ "$MANUAL_SETUP" != 'yes' ]; then
+        set -e
+        install_config "$config_path" "${REPO_PATH}/${app}/${main_config_subpath}"
+        set +e
+    fi
 
     local check_additional_setup="$(type 'additional_setup' 2>&1)"
 
