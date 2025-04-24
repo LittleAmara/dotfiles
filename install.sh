@@ -29,6 +29,7 @@ readonly RESET='\033[0m'
 readonly REPO_PATH="$(dirname "$(realpath "$0")")"
 
 CONFIGURATION_VARIABLES='MANUAL_SETUP app_name config_path check_command main_config_subpath'
+CONFIGURATION_FUNCTIONS='additional_setup'
 
 LOG_PREFIX='INITIALIZATION'
 
@@ -142,6 +143,7 @@ configure_app() {
     [ -f "$config_script" ] || fail "$app does not contain the required instructions for installing its configuration. See README for more information."
 
     unset -v $CONFIGURATION_VARIABLES
+    unset -f $CONFIGURATION_FUNCTIONS
     log_info "Reading $config_script..."
     . "$config_script"
 
