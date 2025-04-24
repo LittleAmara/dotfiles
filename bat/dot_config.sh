@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+MANUAL_SETUP='no'
+
 app_name='bat'
 config_path="${HOME}/.config/bat"
 check_command='bat --version'
+main_config_subpath=''
 
 additional_setup() {
     set -e

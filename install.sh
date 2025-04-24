@@ -82,7 +82,8 @@ is_dot_config_valid() {
     local status=0
     for variable in $CONFIGURATION_VARIABLES; do
         # Ugly hack to evaluate a variable which name is stored inside another variable in a POSIX fashion
-        if eval "test -z \"\$$variable\"" ; then
+        # Note: [ -z ${var+x} ] yields true only if variable is unset
+        if eval "test -z \"\${$variable+x}\"" ; then
             log_fail "$variable must be defined in the dot_config file"
             status=1
         fi

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+MANUAL_SETUP='no'
+
 app_name='codium'
 config_path="${HOME}/.config/VSCodium/User"
 check_command='codium --version'

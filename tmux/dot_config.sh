@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+MANUAL_SETUP='no'
+
 app_name='tmux'
 config_path="${HOME}/.config/tmux"
 check_command='tmux --version'
+main_config_subpath=''
 
 additional_setup() {
     set -e
